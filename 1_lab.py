@@ -37,8 +37,14 @@ NUMBER_HTML = """
     <title>Phone Number Details</title>
 </head>
 <body>
-    <h1>Phone Numbers Details</h1>
-    <p>Selected phone number: {{ number }}</p>
+    <h1>Phone Number Details</h1>
+
+    {% if exists %}
+        <p>Selected phone number: {{ number }}</p>
+    {% else %}
+        <p style="color:black;">This number is not exist!</p>
+    {% endif %}
+
     <a href="/">Main page</a>
 </body>
 </html>
@@ -51,7 +57,8 @@ def index():
 @app.route("/number/")
 def number_info():
     num = request.args.get("number", "")
-    return render_template_string(NUMBER_HTML, number=num)
+    exists = num in phone_numbers
+    return render_template_string(NUMBER_HTML, number=num, exists=exists)
 
 if __name__ == "__main__":
     app.run(debug=True)
