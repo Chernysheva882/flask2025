@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phone Numbers</title>
+</head>
+
+<body>
+    <h1>Phone Numbers</h1>
+
+    <form action="{{ url_for('number_info') }}" method="get">
+        <label for="number">Enter phone number:</label>
+        <input type="text" id="number" name="number" required>
+        <input type="submit" value="Search">
+    </form>
+
+    <div>
+        {% for number in numbers %}
+        <a href="{{ url_for('number_info') }}?number={{ number }}">{{ number }}</a>&nbsp;&nbsp;
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
