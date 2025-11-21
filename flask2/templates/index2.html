@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Загрузка файлов</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 30px; }
+      table { border-collapse: collapse; width: 100%; margin-top: 20px }
+      th, td { padding: 10px; border: 1px solid #ddd; text-align: left }
+      .flash { padding: 10px; background: #eef; margin-bottom: 10px }
+      .btn { padding: 6px 12px; border: 1px solid #ccc; background: #fff; cursor: pointer }
+    </style>
+  </head>
+  <body>
+    <h1>Загрузка файлов</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for cat, msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <button class="btn" type="submit">Загрузить</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Пользовательское имя файла</th>
+          <th>Путь к файлу на сервере</th>
+          <th>Дата загрузки</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in files %}
+        <tr>
+          <td>{{ f.original_name }}</td>
+          <td><a href="{{ url_for('uploaded_file', relpath=f.path) }}">{{ f.path }}</a></td>
+          <td>{{ f.upload_time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
