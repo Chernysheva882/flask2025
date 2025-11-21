@@ -29,16 +29,20 @@
     <table>
       <thead>
         <tr>
+          <th>UUID имя файла</th>
           <th>Пользовательское имя файла</th>
           <th>Путь к файлу на сервере</th>
+          <th>Расширение</th>
           <th>Дата загрузки</th>
         </tr>
       </thead>
       <tbody>
         {% for f in files %}
         <tr>
+          <td>{{ f.uuid_name }}</td>
           <td>{{ f.original_name }}</td>
           <td><a href="{{ url_for('uploaded_file', relpath=f.path) }}">{{ f.path }}</a></td>
+          <td>{{ f.ext }}</td>
           <td>{{ f.upload_time }}</td>
         </tr>
         {% endfor %}
