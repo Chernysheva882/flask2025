@@ -17,7 +17,7 @@ os.makedirs(UPLOAD_ROOT, exist_ok=True)
 os.makedirs(TMP_DIR, exist_ok=True)
 
 app = Flask(__name__)
-app.secret_key = "replace-with-secure-random-secret"
+app.secret_key = os.urandom(256)
 
 def load_db():
     if not os.path.exists(DB_PATH):
