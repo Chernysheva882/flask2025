@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "password_hash": "scrypt:32768:8:1$DysyFArk399Kc46j$bf6a12da755cf65ed0b32611c97446895fedda5125c0487a23732c3e77329a49b93bf829e3acad6add89e3d6b8f9078743a506c708bff27f58deadc2057c491e",
+    "registered_at": "2025-12-02T04:56:54.405398+00:00",
+    "last_login_at": "2025-12-02T05:05:24.201026+00:00",
+    "is_admin": true
+  },
+  "tasya": {
+    "password_hash": "scrypt:32768:8:1$jSpRvlbmOyK1tFGS$f228cb91633914e8ba638ab6adb53181b5dda4edcaf6190fb8ee58312cff6c851d1617d99b4d9f3af4aab00dd9f1736e0d9cccdc8077cbd88661051841af601f",
+    "registered_at": "2025-12-02T05:04:24.412088+00:00",
+    "last_login_at": "2025-12-02T05:04:54.966759+00:00",
+    "is_admin": false
+  }
+}

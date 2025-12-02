@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Flask App{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .flash { padding: .5rem; margin-bottom: .5rem; border-radius:4px }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{% block header %}Приложение{% endblock %}</h1>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="flashes">
+        {% for category, msg in messages %}
+          <div class="flash"><strong>{{ category }}:</strong> {{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
